@@ -19,8 +19,7 @@ env:
   ECR_REPOSITORY: 669821887388.dkr.ecr.us-east-2.amazonaws.com/fastapi-basic           # set this to your Amazon ECR repository name
   ECS_SERVICE: ex-fargate                 # set this to your Amazon ECS service name
   ECS_CLUSTER: ex-fargate                 # set this to your Amazon ECS cluster name
-  ECS_TASK_DEFINITION: 
-task_definition.json
+  ECS_TASK_DEFINITION: task_definition.json
 # set this to the path to your Amazon ECS task definition
                                                # file, e.g. .aws/task-definition.json
   CONTAINER_NAME: ecsdemo-frontend           # set this to the name of the container in the
