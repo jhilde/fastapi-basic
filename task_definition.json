@@ -1,0 +1,146 @@
+{
+    "taskDefinitionArn": "arn:aws:ecs:us-east-2:669821887388:task-definition/ex-fargate:4",
+    "containerDefinitions": [
+        {
+            "name": "ecsdemo-frontend",
+            "image": "669821887388.dkr.ecr.eu-west-1.amazonaws.com/fastapi-basic:latest",
+            "cpu": 512,
+            "memory": 1024,
+            "memoryReservation": 100,
+            "portMappings": [
+                {
+                    "name": "ecsdemo-frontend",
+                    "containerPort": 80,
+                    "hostPort": 80,
+                    "protocol": "tcp"
+                }
+            ],
+            "essential": true,
+            "environment": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "dependsOn": [
+                {
+                    "containerName": "fluent-bit",
+                    "condition": "START"
+                }
+            ],
+            "startTimeout": 30,
+            "stopTimeout": 120,
+            "user": "0",
+            "privileged": false,
+            "readonlyRootFilesystem": false,
+            "interactive": false,
+            "pseudoTerminal": false,
+            "logConfiguration": {
+                "logDriver": "awsfirelens",
+                "options": {
+                    "Name": "firehose",
+                    "delivery_stream": "my-stream",
+                    "log-driver-buffer-limit": "2097152",
+                    "region": "us-east-2"
+                },
+                "secretOptions": []
+            }
+        },
+        {
+            "name": "fluent-bit",
+            "image": "906394416424.dkr.ecr.us-east-2.amazonaws.com/aws-for-fluent-bit:2.31.11",
+            "cpu": 512,
+            "memory": 1024,
+            "memoryReservation": 50,
+            "portMappings": [],
+            "essential": true,
+            "environment": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "startTimeout": 30,
+            "stopTimeout": 120,
+            "user": "0",
+            "privileged": false,
+            "readonlyRootFilesystem": true,
+            "interactive": false,
+            "pseudoTerminal": false,
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/aws/ecs/ex-fargate/fluent-bit",
+                    "awslogs-region": "us-east-2",
+                    "awslogs-stream-prefix": "ecs"
+                },
+                "secretOptions": []
+            },
+            "firelensConfiguration": {
+                "type": "fluentbit"
+            }
+        }
+    ],
+    "family": "ex-fargate",
+    "taskRoleArn": "arn:aws:iam::669821887388:role/ex-fargate-20230729204140835000000002",
+    "executionRoleArn": "arn:aws:iam::669821887388:role/ex-fargate-20230729204140837400000004",
+    "networkMode": "awsvpc",
+    "revision": 4,
+    "volumes": [],
+    "status": "ACTIVE",
+    "requiresAttributes": [
+        {
+            "name": "ecs.capability.logging-driver.awsfirelens.log-driver-buffer-limit"
+        },
+        {
+            "name": "ecs.capability.execution-role-awslogs"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.17"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.logging-driver.awsfirelens"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
+        },
+        {
+            "name": "ecs.capability.execution-role-ecr-pull"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "name": "ecs.capability.task-eni"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+        },
+        {
+            "name": "ecs.capability.firelens.fluentbit"
+        },
+        {
+            "name": "ecs.capability.container-ordering"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EC2",
+        "FARGATE"
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "1024",
+    "memory": "4096",
+    "runtimePlatform": {
+        "cpuArchitecture": "ARM64",
+        "operatingSystemFamily": "LINUX"
+    },
+    "registeredAt": "2023-07-29T21:29:18.725Z",
+    "registeredBy": "arn:aws:iam::669821887388:root",
+    "tags": []
+}
