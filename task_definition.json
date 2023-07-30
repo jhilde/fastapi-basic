@@ -1,5 +1,4 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-2:669821887388:task-definition/ex-fargate:4",
     "containerDefinitions": [
         {
             "name": "ecsdemo-frontend",
@@ -79,58 +78,8 @@
     "taskRoleArn": "arn:aws:iam::669821887388:role/ex-fargate-20230729204140835000000002",
     "executionRoleArn": "arn:aws:iam::669821887388:role/ex-fargate-20230729204140837400000004",
     "networkMode": "awsvpc",
-    "revision": 4,
     "volumes": [],
-    "status": "ACTIVE",
-    "requiresAttributes": [
-        {
-            "name": "ecs.capability.logging-driver.awsfirelens.log-driver-buffer-limit"
-        },
-        {
-            "name": "ecs.capability.execution-role-awslogs"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.ecr-auth"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.17"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.logging-driver.awsfirelens"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.task-iam-role"
-        },
-        {
-            "name": "ecs.capability.execution-role-ecr-pull"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
-        },
-        {
-            "name": "ecs.capability.task-eni"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
-        },
-        {
-            "name": "ecs.capability.firelens.fluentbit"
-        },
-        {
-            "name": "ecs.capability.container-ordering"
-        }
-    ],
     "placementConstraints": [],
-    "compatibilities": [
-        "EC2",
-        "FARGATE"
-    ],
     "requiresCompatibilities": [
         "FARGATE"
     ],
@@ -140,7 +89,5 @@
         "cpuArchitecture": "ARM64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2023-07-29T21:29:18.725Z",
-    "registeredBy": "arn:aws:iam::669821887388:root",
     "tags": []
 }
